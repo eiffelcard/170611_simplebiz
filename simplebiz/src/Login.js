@@ -8,9 +8,7 @@ class Login extends Component {
   constructor(props){
     super(props);
      this.state = {
-      baseUrl: 'https://skyutility.eiffelcard.com/API/',
-      baseUserImageUrl: 'https://skyutility.eiffelcard.com/pic/users_picture/',
-      userNoimage: '/img/no-image.jpg',
+      baseUrl: 'https://skyutility.eiffelcard.com/ynoda_test/simplebiz/API/',
       baseProductImageUrl: 'https://skyutility.eiffelcard.com/pic/product_picture/',
       id: '',
       name: '',
@@ -40,7 +38,7 @@ class Login extends Component {
 
    getLogin(){
      console.log('login');
-      request.post(this.state.baseUrl+"Login/login.php").type('form').send({ email:this.state.email, password:this.state.password,continue:0 })
+      request.post(this.state.baseUrl+"login.php").type('form').send({ email:this.state.email, password:this.state.password,continue:0 })
         .end((err, res)=> {
           if (err) {
             console.log(err);
@@ -51,7 +49,8 @@ class Login extends Component {
             this.setState({
               id:res.body.id
             });
-        
+             console.log("ログイン完了");
+            window.location.href = "/mainmenu";
           }
       });
 
@@ -66,6 +65,8 @@ class Login extends Component {
             <input type='text' value={this.state.email} placeholder='email' 　onChange={this.onChangeEmail}/><br/>
             <input type='text' value={this.state.password} placeholder='password' onChange={this.onChangePassword}/>
             <div onClick={this.getLogin}>ログイン</div>
+             <p>{this.state.id}</p>
+          
       </div>
     );
   }

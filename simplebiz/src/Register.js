@@ -9,9 +9,7 @@ class Register extends Component {
   constructor(props){
     super(props);
      this.state = {
-      baseUrl: 'https://skyutility.eiffelcard.com/API/',
-      baseUserImageUrl: 'https://skyutility.eiffelcard.com/pic/users_picture/',
-      userNoimage: '/img/no-image.jpg',
+     baseUrl: 'https://skyutility.eiffelcard.com/ynoda_test/simplebiz/API/',
       baseProductImageUrl: 'https://skyutility.eiffelcard.com/pic/product_picture/',
       id: '',
       name: '',

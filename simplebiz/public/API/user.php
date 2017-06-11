@@ -1,6 +1,7 @@
 <?php
 require('setting.php');
-
+	
+header("Access-Control-Allow-Origin: *");
 error_reporting(E_ALL^E_NOTICE);
 
 
@@ -41,9 +42,10 @@ error_reporting(E_ALL^E_NOTICE);
       }
 
      //3.登録
-      $sql=sprintf('INSERT INTO users SET email="%s",password="%s",reated="%s"',
+      $sql=sprintf('INSERT INTO users SET email="%s",password="%s",name="%s",created="%s"',
       mysqli_real_escape_string($db,$_POST['email']),
       mysqli_real_escape_string($db,sha1($_POST['password'])),
+      mysqli_real_escape_string($db,$_POST['name']),
       date('Y-m-d H:i:s')
     );
 
@@ -78,12 +80,8 @@ error_reporting(E_ALL^E_NOTICE);
        ,'error_messageEn' => $error_messageEn
        ,'id'=> $last_id
         ,'success'=> $success
-          ,'token'=> $token3
+        ,'authtoken'=> $token3
        );
-
-       $mylog=new REGISTER();
-     $mylog->log($db,$last_id,"Register/newuser");
-
 
  header('Content-Type: application/json; charset=UTF-8');
 

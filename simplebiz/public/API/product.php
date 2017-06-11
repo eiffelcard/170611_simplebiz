@@ -1,6 +1,6 @@
 <?php
 	require('setting.php');
-
+	header("Access-Control-Allow-Origin: *");
 	error_reporting(E_ALL^E_NOTICE);
 
 		 $status=200;
