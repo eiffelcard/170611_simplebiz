@@ -18,18 +18,10 @@
         pm.pic3,
         pm.pic4,
         pm.pic5,
-        sub2.fav,
         pm.productfamilly
 					FROM product_masters as pm
-		left join (
-		select fav,productnumber
-		from product_favorites
-	 where users_id=%d) sub2
-	 on  pm.productnumber=sub2.productnumber
-					WHERE pricetype="%s" and is_deleted=0 and is_campaign>0
-				 	order by is_campaign limit 5',
-						 mysqli_real_escape_string($db,$id),
-		 mysqli_real_escape_string($db,"A")
+					WHERE is_campaign>0
+				 	order by is_campaign limit 5'
 		);
 			$product_query=mysqli_query($db,$sql) or die(mysqli_error($db));
 

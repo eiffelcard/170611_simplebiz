@@ -80,10 +80,6 @@ $user = array(
 );
 
 
-$mylog=new REGISTER();
-$mylog->log($db,$table[id],"login");
-
-
 header('Content-Type: application/json; charset=UTF-8');
 echo json_encode($user);
 
