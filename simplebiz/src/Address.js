@@ -4,7 +4,7 @@ import request from 'superagent';
 import { Link } from 'react-router-dom'
 
 
-class Mainmenu extends Component {
+class Address extends Component {
   constructor(props){
     super(props);
      this.state = {
@@ -21,25 +21,18 @@ class Mainmenu extends Component {
      };
    }
 
+   
+
+
   render() {
     return (
       <div>
-        <p>ここはメインメニューです</p>
-        <div onClick={this.getLogin}>
-        もう一回ログイン
-        </div>
-       <div onClick={this.sendOrder}>
-        これでカードを登録する
-        </div>
-        <p>{this.state.funnymessage}</p>
-        <p><Link to="/message">手紙を作成</Link></p>
-        <p><Link to="/address">住所管理</Link></p>
-        <p><Link to="/order">オーダー確認</Link></p>
-     
+        <p>ここはアドレスです</p>
+        <p><Link to="/mainmenu">メインメニューへ</Link></p>
       </div>
 
     );
   }
 }
 
-export default Mainmenu;
+export default Address;
