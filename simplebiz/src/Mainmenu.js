@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import request from 'superagent';
 import { Link } from 'react-router-dom'
-import OrderList from './OrderList';
+
 
 
 class Mainmenu extends Component {
@@ -59,7 +59,6 @@ class Mainmenu extends Component {
         <p><Link to="/message">手紙を作成</Link></p>
         <p><Link to="/address">住所管理</Link></p>
         <p><Link to="/order">オーダー確認</Link></p>
-         <OrderList myid={this.state.myid} />
      
       </div>
 

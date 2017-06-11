@@ -11,8 +11,8 @@ class OrderList extends Component {
      this.state = {
       baseUrl: 'https://skyutility.eiffelcard.com/ynoda_test/simplebiz/API/',
       baseProductImageUrl: 'https://skyutility.eiffelcard.com/pic/product_picture/',
-      myid:6,
       orderList:[],
+      myid:6,
       myname:'',
       mypicture:'',
      };
@@ -26,6 +26,7 @@ class OrderList extends Component {
    }
 
    getAddress(){
+     console.log(this.props.myid);
      console.log('address start');
     request.post(this.state.baseUrl + "address.php").type('form').send({
       myid: this.state.myid
