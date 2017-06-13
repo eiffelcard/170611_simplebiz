@@ -170,16 +170,9 @@ class Message extends Component {
         <input type='text' value={this.state.delivery_name} placeholder='送り先' onChange={this.onChangesDeliveryName} /><br />
         <input type='textarea' value={this.state.message} placeholder='message' onChange={this.onChangesMessage} style={{ width: 200, height: 100 }} /><br />
         <div onClick={this.getOrder}>新規登録</div>
-        {/*<CheckMessage postcode="8596325" state={this.state.state} city={this.state.city} 
-         street={this.state.street} product={this.state.product} building={this.state.building} title={this.state.title}  delivery_name={this.state.delivery_name} message={this.state.message} onChange={this.ChangeProduct} /> */}
-        <br />
-        <p>確認用</p>
-        <p>{this.state.postcode}</p>
-        <p>{this.state.state}{this.state.city}{this.state.street}{this.state.building}</p>
-        <p>{this.state.title}<br/>
-          {this.state.delivery_name}様</p>
-          <p>{this.state.message}</p>
-        <img src={this.state.baseProductImageUrl + this.state.product + 'thum.jpg'} alt={this.state.product} style={{ width: 150, height: 100 }} />
+        <CheckMessage postcode={this.state.postcode} state={this.state.state} city={this.state.city} 
+         street={this.state.street} product={this.state.product} building={this.state.building} title={this.state.title}  delivery_name={this.state.delivery_name} message={this.state.message} onChange={this.ChangeProduct} /> 
+     
 
 
       </div>

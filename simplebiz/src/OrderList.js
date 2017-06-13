@@ -20,8 +20,9 @@ class OrderList extends Component {
      this.select = this.select.bind(this);
    }
 
-   componentWillMount(){
-     console.log("will");
+   componentWillMount(myid){
+     console.log("will:orderlist");
+     console.log(this.props.myid);
      this.getAddress();
    }
 
@@ -29,7 +30,7 @@ class OrderList extends Component {
      console.log(this.props.myid);
      console.log('address start');
     request.post(this.state.baseUrl + "address.php").type('form').send({
-      myid: this.state.myid
+      myid: this.props.myid
     })
         .end((err, res)=> {
           if (err) {
@@ -58,7 +59,8 @@ class OrderList extends Component {
 
 
   render() {
-
+    
+      console.log('ifのなか');
     const disp=this.state.orderList.map((p)=>
         <div>
           <img src={this.state.baseProductImageUrl + p.product+'thum.jpg'} alt={p.product} style={{width: 150, height:100}} />
@@ -68,6 +70,7 @@ class OrderList extends Component {
           </div>
         </div>
   　);
+    
     
 
 

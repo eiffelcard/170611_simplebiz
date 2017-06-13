@@ -20,8 +20,9 @@ class Order extends Component {
      };
    }
   componentWillMount(){
-  console.log("will");
+  console.log("will1");
   this.checkSession();
+    console.log(this.setState.myid)
 }
  checkSession(){
      console.log('check_session start');
@@ -35,8 +36,10 @@ class Order extends Component {
             authtoken:res.body.authtoken,
             myid:res.body.myid,
             name:res.body.name
-            });
+          });
+          
             console.log('check_session done');
+            console.log('myid'+this.state.myid);
           }else{
             console.log(res.body.status);
             console.log(res.body.error_message);
