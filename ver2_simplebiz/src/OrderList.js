@@ -15,14 +15,14 @@ class OrderList extends Component {
       myid:6,
       myname:'',
       mypicture:'',
+      APIcheck:''
      };
      this.getAddress = this.getAddress.bind(this);
      this.select = this.select.bind(this);
    }
 
-   componentWillpropos(myid){
+   componentDidMount(){
      console.log("will:orderlist");
-     console.log(this.props.myid);
      this.getAddress();
    }
 
@@ -37,7 +37,8 @@ class OrderList extends Component {
             console.log(err);
           } else {
             this.setState({
-            orderList:res.body.orders
+            orderList:res.body.orders,
+            APIcheck:'confirm'
             });
             console.log('address complete');
           }
@@ -52,16 +53,12 @@ class OrderList extends Component {
     this.parentProductChange(e.target.id)
   }
 
-   parentProductChange(e){
-      this.props.onChange(e);
-    }
+ 
 
 
 
   render() {
-    
-      console.log('ifのなか');
-    const disp=this.state.orderList.map((p)=>
+    const disp=this.state.orderList?this.state.orderList.map((p)=>
         <div>
           <img src={this.state.baseProductImageUrl + p.product+'thum.jpg'} alt={p.product} style={{width: 150, height:100}} />
           <br />
@@ -69,17 +66,14 @@ class OrderList extends Component {
           <div id={p.id} >詳細
           </div>
         </div>
-  　);
-    
-    
+  　):null;
 
 
-
-    return (
+      return (
       <div className="App">
       <h2>オーダー一覧</h2>
-
-        {disp}
+   {disp}
+        
       <p className="App-intro">
     <br />
   

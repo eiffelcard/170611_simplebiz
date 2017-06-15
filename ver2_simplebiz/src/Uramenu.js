@@ -8,7 +8,7 @@ import Order from './Order';
 import Address from './Address';
 
 
-class Mainmenu extends Component {
+class Uramenu extends Component {
   constructor(props){
     super(props);
      this.state = {
@@ -75,8 +75,8 @@ class Mainmenu extends Component {
         const Page=pageComponent[this.state.currentPage]
     return (
       <div>
-        <p>ここはメインメニューです</p>
-        <p><Link to="/uramenu">裏ニューへ</Link></p>
+        <p>ここは裏メニューです</p>
+           <p><Link to="/mainmenu">メインメニューへ</Link></p>
           {this.state.myid!==''?<Menu myid={this.state.myid} onChange={this.changeMenu}/>:''}
         {this.state.myid!==''?<Page myid={this.state.myid}/>:''}
          <button onClick={()=>{this.movepage('Message')}}>Change!</button>
@@ -86,4 +86,4 @@ class Mainmenu extends Component {
   }
 }
 
-export default Mainmenu;
+export default Uramenu;

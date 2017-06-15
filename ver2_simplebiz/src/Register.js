@@ -26,8 +26,6 @@ class Register extends Component {
   render() {
     return (
       <div className="App">
-        <h1>eiffel<br/>Simple Biz!</h1>
-        <p>新規登録画面</p>
           <RegisterForm />
       </div>
     );

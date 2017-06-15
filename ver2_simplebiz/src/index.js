@@ -10,6 +10,7 @@ import Mainmenu from './Mainmenu';
 import Message from './Message';
 import Order from './Order';
 import Address from './Address';
+import Uramenu from './Uramenu';
 
 
 
@@ -19,6 +20,7 @@ ReactDOM.render(
     <Route exact path="/" component={Home}/>
     <Route exact path="/register" component={Register}/>
      <Route exact path="/mainmenu" component={Mainmenu}/>
+      <Route exact path="/uramenu" component={Uramenu}/>
      <Route exact path="/Message" component={Message}/>
      <Route exact path="/Order" component={Order}/>
      <Route exact path="/Address" component={Address}/>

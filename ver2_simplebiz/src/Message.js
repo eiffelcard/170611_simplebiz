@@ -159,7 +159,6 @@ class Message extends Component {
     return (
       <div>
         <p>ここはメッセージです</p>
-        <p><Link to="/mainmenu">メインメニューへ</Link></p>
         <CardListDisp product={this.state.product} onChange={this.ChangeProduct} />
         <input type='text' value={this.state.postcode} placeholder='postcode' onChange={this.onChangePostcode} /><br />
         <input type='text' value={this.state.state} placeholder='都道府県' onChange={this.onChangesState} /><br />
