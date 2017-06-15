@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import request from 'superagent';
+
 import { Link } from 'react-router-dom';
 import RegisterForm from './RegisterForm';
 
