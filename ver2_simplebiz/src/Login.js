@@ -74,7 +74,7 @@ class Login extends Component {
              <p>{this.state.id}</p>
                   <FlatButton label="Default" />
                 <RaisedButton label="Primary"  primary={true} />
-                 <RaisedButton label="Primary"  primary={true} />
+                 <RaisedButton label="Secondary"  secondary={true} />
       </div>
     );
   }
