@@ -27,7 +27,6 @@ class Menu extends Component {
 
   componentWillMount() {
     console.log(this.state.pages);
-
   }
   componentDidMount() {
     console.log(this.state.pages);

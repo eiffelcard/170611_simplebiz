@@ -6,6 +6,9 @@ import Menu from './Menu';
 import Message from './Message';
 import Order from './Order';
 import Address from './Address';
+import Setting from './Setting';
+import Payment from './Payment';
+import Mypage from './Mypage';
 
 
 class Uramenu extends Component {
@@ -20,7 +23,8 @@ class Uramenu extends Component {
        myname:'',
        mypicture:'',
        message:'eiffelは住所を知らない友だちにも手紙や物が贈れるサービスです。登録はQRカードからお願いします',
-       currentPage:'Order'
+       currentPage:'Order',
+       menutype:"B"
      };
       this.changeMenu = this.changeMenu.bind(this);
 
@@ -70,14 +74,17 @@ class Uramenu extends Component {
          const pageComponent={
           Message:Message,
           Order:Order,
-          Address:Address
+          Address:Address,
+          Payment:Payment,
+          Setting:Setting,
+          Mypage:Mypage
         }
         const Page=pageComponent[this.state.currentPage]
     return (
       <div>
-        <p>ここは裏メニューです</p>
-           <p><Link to="/mainmenu">メインメニューへ</Link></p>
-          {this.state.myid!==''?<Menu myid={this.state.myid} onChange={this.changeMenu}/>:''}
+        <p>ここはメインメニューです</p>
+        <p><Link to="/mainmenu">メインメニューへ</Link></p>
+          {this.state.myid!==''?<Menu myid={this.state.myid} onChange={this.changeMenu} menutype={this.state.menutype}/>:''}
         {this.state.myid!==''?<Page myid={this.state.myid}/>:''}
          <button onClick={()=>{this.movepage('Message')}}>Change!</button>
       </div>

@@ -17,8 +17,43 @@ class Menu extends Component {
       myname: '',
       mypicture: '',
       message: 'eiffelは住所を知らない友だちにも手紙や物が贈れるサービスです。登録はQRカードからお願いします',
+      page:"Order",
+      menu1:"",
+      menu2:"",
+      menu3:"",
+      menu4:""
     };
     this.parentPageChange=this.parentPageChange.bind(this);
+    this.changeMenu=this.changeMenu.bind(this);
+  }
+
+    componentWillMount() {
+    this.changeMenu(this.props.menutype);
+  }
+
+
+  changeMenu(type) {
+    switch (type) {
+      case "A":
+      this.setState({
+      menu1:"Message",
+      menu2:"Address",
+      menu3:"Order",
+      menu4:""
+    });
+        break;
+      case "B":
+      this.setState({
+      menu1:"Payment",
+      menu2:"Setting",
+      menu3:"Mypage",
+      menu4:""
+    });
+        break;
+      case "C":
+        console.log("これはCです");
+        break;
+    }
   }
 
   parentPageChange(name) {
@@ -39,11 +74,10 @@ class Menu extends Component {
         <p>ここはメニューです</p>
         <p style={fontstyle}>userid:{this.props.myid}</p>
         <tr>
-          <td><button onClick={() => { this.parentPageChange('Message') }}>手紙を作成</button></td>
-          <td><button onClick={() => { this.parentPageChange('Address') }}>住所管理</button></td>
-          <td><button onClick={() => { this.parentPageChange('Order') }}>オーダー確認</button></td>
-          <td><button><Link to="/address">住所管理  </Link></button></td>
-          <td><button><Link to="/order">オーダー確認  </Link></button></td>
+          <td><button onClick={() => { this.parentPageChange(this.state.menu1) }}>{this.state.menu1}</button></td>
+          <td><button onClick={() => { this.parentPageChange(this.state.menu2) }}>{this.state.menu2}</button></td>
+          <td><button onClick={() => { this.parentPageChange(this.state.menu3) }}>{this.state.menu3}</button></td>
+             {this.state.menu4 !== '' ?  <td><button onClick={() => { this.parentPageChange(this.state.menu4) }}>{this.state.menu4}</button></td>:''}
         </tr>
       </div>
 
