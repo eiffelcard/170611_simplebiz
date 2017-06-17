@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Login from './Login';
 import Register from './Register';
+import request from 'superagent';
 
 
 class Home extends Component {
@@ -9,9 +10,17 @@ class Home extends Component {
   constructor(props){
     super(props);
      this.state = {
-      currentPage:'Login'  
+       baseUrl: 'https://skyutility.eiffelcard.com/ynoda_test/simplebiz/API/',
+      currentPage:'Login',
+      jsonmessage:''
      };
     this.movepage=this.movepage.bind(this);
+    this.getJson=this.getJson.bind(this);
+   }
+
+     componentWillMount(){
+     console.log("will");
+     this.getJson();
    }
 
    movepage(name){
@@ -30,10 +39,25 @@ class Home extends Component {
       currentPage:'Login'
       });
     }
-
-   
    }
-   
+
+    getJson(){
+     console.log('Json');
+      request.get(this.state.baseUrl+"json_ja.php").type('form').send({ email:this.state.email})
+        .end((err, res)=> {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log(res.body);
+            console.log(res.body.LOGINSUB);
+            this.setState({
+           jsonmessage:res.body
+            });
+            console.log(this.state.jsonmessage)
+          }
+      });
+  }
+
   render() {
      const pageComponent={
       Login:Login,
@@ -44,10 +68,11 @@ class Home extends Component {
 
     return (
       <div className="biz-home">
-        <h1>eiffel<br/>Simple Biz!</h1>
+        <h1>{this.state.jsonmessage.LOGINTOP}<br/>{this.state.jsonmessage.LOGINSUB}</h1>
         <p className="App-intro">
-        簡単にお礼状が送れます<br/>今なら無料お試し実施中
+      {this.state.jsonmessage.LOGINMESSAGE}<br/>{this.state.jsonmessage.LOGINCAMPAIGN}
         </p>
+        <p>Jsonのメッセージ {this.state.jsonmessage.LOGINSUB}</p>
         <Page/>
         <button onClick={()=>{this.movepage('Register')}}>Change!</button>
         <button onClick={()=>{this.switchpage(this.state.currentPage)}}>Switch!</button>
