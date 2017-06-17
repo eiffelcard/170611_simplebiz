@@ -11,11 +11,16 @@ import Message from './Message';
 import Order from './Order';
 import Address from './Address';
 import Uramenu from './Uramenu';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
+
 
 
 
 ReactDOM.render(
   <BrowserRouter>
+    <MuiThemeProvider>
     <App>
     <Route exact path="/" component={Home}/>
     <Route exact path="/register" component={Register}/>
@@ -25,6 +30,7 @@ ReactDOM.render(
      <Route exact path="/Order" component={Order}/>
      <Route exact path="/Address" component={Address}/>
     </App>
+       </MuiThemeProvider>
   </BrowserRouter>,
   document.getElementById('root')
 );

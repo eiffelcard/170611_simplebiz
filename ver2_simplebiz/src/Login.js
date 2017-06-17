@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 import request from 'superagent';
 import { Link } from 'react-router-dom';
-
+import RaisedButton from 'material-ui/RaisedButton';
+import FlatButton from 'material-ui/FlatButton';
+import AppBar from 'material-ui/AppBar';
 
 class Login extends Component {
   constructor(props){
@@ -62,11 +64,17 @@ class Login extends Component {
   render() {
     return (
       <div className="App">
+          <AppBar
+    title="Title"
+    iconClassNameRight="muidocs-icon-navigation-expand-more"
+  />
             <input type='text' value={this.state.email} placeholder='email' 　onChange={this.onChangeEmail}/><br/>
             <input type='text' value={this.state.password} placeholder='password' onChange={this.onChangePassword}/>
             <div onClick={this.getLogin}>ログイン</div>
              <p>{this.state.id}</p>
-          
+                  <FlatButton label="Default" />
+                <RaisedButton label="Primary"  primary={true} />
+                 <RaisedButton label="Secondary"  secondary={true} />
       </div>
     );
   }
