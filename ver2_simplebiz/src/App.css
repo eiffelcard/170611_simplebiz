@@ -22,3 +22,14 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.menubox {
+  float: left;
+  border-color: yellow;
+  width: 15%;
+}
+.contentsbox {
+  float: left;
+  border-color: yellow;
+  width: 85%;
+}

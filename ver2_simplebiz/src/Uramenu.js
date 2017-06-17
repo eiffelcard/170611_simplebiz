@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import './App.css';
 import request from 'superagent';
 import { Link } from 'react-router-dom'
-import Menu from './Menu';
+import MenuPage from './MenuPage';
 import Message from './Message';
 import Order from './Order';
 import Address from './Address';
 import Setting from './Setting';
 import Payment from './Payment';
 import Mypage from './Mypage';
-
+import Header from './Header';
 
 class Uramenu extends Component {
   constructor(props){
@@ -23,7 +23,7 @@ class Uramenu extends Component {
        myname:'',
        mypicture:'',
        message:'eiffelは住所を知らない友だちにも手紙や物が贈れるサービスです。登録はQRカードからお願いします',
-       currentPage:'Order',
+       currentPage:'Setting',
        menutype:"B"
      };
       this.changeMenu = this.changeMenu.bind(this);
@@ -81,12 +81,17 @@ class Uramenu extends Component {
         }
         const Page=pageComponent[this.state.currentPage]
     return (
-      <div>
-        <p>ここはメインメニューです</p>
-        <p><Link to="/mainmenu">メインメニューへ</Link></p>
-          {this.state.myid!==''?<Menu myid={this.state.myid} onChange={this.changeMenu} menutype={this.state.menutype}/>:''}
-        {this.state.myid!==''?<Page myid={this.state.myid}/>:''}
-         <button onClick={()=>{this.movepage('Message')}}>Change!</button>
+         <div>
+        <div>
+            <Header currentPage={this.state.currentPage}/>
+        </div>
+        <div className="menubox">
+          {this.state.myid !== '' ? <MenuPage myid={this.state.myid} onChange={this.changeMenu} menutype={this.state.menutype} /> : ''}
+        </div>
+        <div className="contentsbox">
+          {this.state.myid !== '' ? <Page myid={this.state.myid} /> : ''}
+          <button onClick={() => { this.movepage('Message') }}>Change!</button>
+        </div>
       </div>
 
     );
