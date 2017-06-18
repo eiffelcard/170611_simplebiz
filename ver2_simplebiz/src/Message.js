@@ -3,6 +3,7 @@ import './App.css';
 import request from 'superagent';
 import { Link } from 'react-router-dom'
 import CardListDisp from './CardListDisp';
+import CardListDisp2 from './CardListDisp2';
 import CheckMessage from './CheckMessage';
 
 
@@ -159,7 +160,7 @@ class Message extends Component {
     return (
       <div>
         <p>ここはメッセージです</p>
-        <CardListDisp product={this.state.product} onChange={this.ChangeProduct} />
+      
         <input type='text' value={this.state.postcode} placeholder='postcode' onChange={this.onChangePostcode} /><br />
         <input type='text' value={this.state.state} placeholder='都道府県' onChange={this.onChangesState} /><br />
         <input type='text' value={this.state.city} placeholder='市町村' onChange={this.onChangesCity} /><br />
@@ -168,6 +169,7 @@ class Message extends Component {
         <input type='text' value={this.state.title} placeholder='肩書き' onChange={this.onChangesTitle} /><br />
         <input type='text' value={this.state.delivery_name} placeholder='送り先' onChange={this.onChangesDeliveryName} /><br />
         <input type='textarea' value={this.state.message} placeholder='message' onChange={this.onChangesMessage} style={{ width: 200, height: 100 }} /><br />
+          <CardListDisp2 product={this.state.product} onChange={this.ChangeProduct} />
         <div onClick={this.getOrder}>新規登録</div>
         <CheckMessage postcode={this.state.postcode} state={this.state.state} city={this.state.city} 
          street={this.state.street} product={this.state.product} building={this.state.building} title={this.state.title}  delivery_name={this.state.delivery_name} message={this.state.message} onChange={this.ChangeProduct} /> 

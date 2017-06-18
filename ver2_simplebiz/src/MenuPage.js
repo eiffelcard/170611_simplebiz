@@ -15,6 +15,13 @@ import PersonIcon from 'material-ui/svg-icons/social/person';
 import AddPhotoIcon from 'material-ui/svg-icons/image/add-to-photos';
 import AccountIcon from 'material-ui/svg-icons/action/account-circle';
 import Divider from 'material-ui/Divider';
+import AppBar from 'material-ui/AppBar';
+import IconButton from 'material-ui/IconButton';
+import SettingIcon from 'material-ui/svg-icons/action/settings';
+import HomeIcon from 'material-ui/svg-icons/action/home';
+import FlatButton from 'material-ui/FlatButton';
+import Drawer from 'material-ui/Drawer';
+
 
 class MenuPage extends Component {
   constructor(props) {
@@ -36,10 +43,13 @@ class MenuPage extends Component {
       icon1: "",
       icon2: "",
       icon3: "",
-      icon4: ""
+      icon4: "",
+      open: false
     };
     this.parentPageChange = this.parentPageChange.bind(this);
     this.changeMenu = this.changeMenu.bind(this);
+    this.handleToggle = this.handleToggle.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
 
   componentWillMount() {
@@ -54,15 +64,15 @@ class MenuPage extends Component {
           menu1: "Message",
           menu2: "Address",
           menu3: "Order",
-          menu4: "",
+          menu4: "Setting",
           icon1: "PictureInPicture",
           icon2: "PermContactCalendar",
           icon3: "LibraryBooks",
-          icon4: "",
+          icon4: "SettingIcon",
           message1: "手紙を書く",
           message2: "住所一覧",
           message3: "オーダー一覧",
-          message4: ""
+          message4: "設定"
         });
         break;
       case "B":
@@ -70,15 +80,15 @@ class MenuPage extends Component {
           menu1: "Setting",
           menu2: "Payment",
           menu3: "Mypage",
-          menu4: "",
+          menu4: "Address",
           icon1: "PersonIcon",
           icon2: "PaymentIcon",
           icon3: "AddPhotoIcon",
-          icon4: "",
+          icon4: "HomeIcon",
           message1: "個人設定",
           message2: "支払い",
           message3: "マイページ作成",
-          message4: ""
+          message4: "Home"
         });
         break;
       case "C":
@@ -89,8 +99,23 @@ class MenuPage extends Component {
 
   parentPageChange(name) {
     this.props.onChange(name);
+    this.handleClose();
   }
 
+
+  handleToggle() {
+    this.setState({ open: !this.state.open });
+  }
+  handleClose() {
+    this.setState({ open: false });
+  }
+
+  handleTouchTap() {
+    window.location.href = "/mainmenu";
+  }
+  gotoSettingPage() {
+    window.location.href = "/uramenu";
+  }
 
 
   render() {
@@ -109,6 +134,9 @@ class MenuPage extends Component {
       font: {
         color: "red"
       },
+      title: {
+        cursor: 'pointer',
+      },
     };
 
 
@@ -118,7 +146,9 @@ class MenuPage extends Component {
       LibraryBooks: LibraryBooks,
       PaymentIcon: PaymentIcon,
       PersonIcon: PersonIcon,
-      AddPhotoIcon: AddPhotoIcon
+      AddPhotoIcon: AddPhotoIcon,
+      SettingIcon:SettingIcon,
+        HomeIcon: HomeIcon
     }
     const Icon1 = iconComponent[this.state.icon1]
     const Icon2 = iconComponent[this.state.icon2]
@@ -129,17 +159,26 @@ class MenuPage extends Component {
 
     return (
       <div>
-        <Paper style={style.paper}>
+        <AppBar
+          title={<span style={style.title}>eiffel biz</span>}
+          onTitleTouchTap={this.handleTouchTap}
+          iconElementRight={<IconButton><SettingIcon /></IconButton>}
+          onLeftIconButtonTouchTap={this.handleToggle}
+          onRightIconButtonTouchTap={this.gotoSettingPage} />
+        <Drawer
+          open={this.state.open}>
           <Menu>
             <p>Menu</p>
-               <MenuItem primaryText={"UserID:"+this.props.myid} leftIcon={<AccountIcon />} onClick={() => { this.parentPageChange(this.state.menu1) }} />
-                <Divider />
+            <MenuItem primaryText={"UserID:" + this.props.myid} leftIcon={<AccountIcon />} onClick={() => { this.parentPageChange(this.state.menu1) }} />
+            <Divider />
             <MenuItem primaryText={this.state.message1} leftIcon={<Icon1 />} onClick={() => { this.parentPageChange(this.state.menu1) }} />
             <MenuItem primaryText={this.state.message2} leftIcon={<Icon2 />} onClick={() => { this.parentPageChange(this.state.menu2) }} />
             <MenuItem primaryText={this.state.message3} leftIcon={<Icon3 />} onClick={() => { this.parentPageChange(this.state.menu3) }} />
-            {this.state.menu4 !== '' ? <MenuItem primaryText={this.state.message3} leftIcon={<Icon3 />} onClick={() => { this.parentPageChange(this.state.menu3) }} /> : ''}
+            <Divider />
+            {this.state.menu4 !== '' ? <MenuItem primaryText={this.state.message4} leftIcon={<Icon4 />} onClick={() => { this.parentPageChange(this.state.menu4) }} /> : ''}
           </Menu>
-        </Paper>
+        </Drawer>
+
         {/*
         <tr>
           <td><button onClick={() => { this.parentPageChange(this.state.menu1) }}>{this.state.menu1}</button></td>

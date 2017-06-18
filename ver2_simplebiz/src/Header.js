@@ -5,6 +5,10 @@ import SettingIcon from 'material-ui/svg-icons/action/settings';
 import HomeIcon from 'material-ui/svg-icons/action/home';
 import FlatButton from 'material-ui/FlatButton';
 import { Link } from 'react-router-dom';
+import Drawer from 'material-ui/Drawer';
+import MenuItem from 'material-ui/MenuItem';
+import Menu from 'material-ui/Menu';
+
 
 class Header extends Component {
   constructor(props) {

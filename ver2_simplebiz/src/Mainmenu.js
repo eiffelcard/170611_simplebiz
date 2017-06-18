@@ -10,7 +10,7 @@ import Setting from './Setting';
 import Payment from './Payment';
 import Mypage from './Mypage';
 import Header from './Header';
-import Header2 from './Header2';
+import MainHome from './MainHome';
 
 
 class Mainmenu extends Component {
@@ -25,7 +25,7 @@ class Mainmenu extends Component {
       myname: '',
       mypicture: '',
       message: 'eiffelは住所を知らない友だちにも手紙や物が贈れるサービスです。登録はQRカードからお願いします',
-      currentPage: 'Message',
+      currentPage: 'MainHome',
       menutype: "A"
     };
     this.changeMenu = this.changeMenu.bind(this);
@@ -79,7 +79,8 @@ class Mainmenu extends Component {
       Address: Address,
       Payment: Payment,
       Setting: Setting,
-      Mypage: Mypage
+      Mypage: Mypage,
+      MainHome:MainHome,
     }
     const Page = pageComponent[this.state.currentPage]
 
@@ -88,12 +89,9 @@ class Mainmenu extends Component {
     return (
       <div>
         <div>
-          <Header currentPage={this.state.currentPage}/>
-        </div>
-        <div className="menubox">
           {this.state.myid !== '' ? <MenuPage myid={this.state.myid} onChange={this.changeMenu} menutype={this.state.menutype} /> : ''}
         </div>
-        <div className="contentsbox">
+        <div>
           {this.state.myid !== '' ? <Page myid={this.state.myid} /> : ''}
           <button onClick={() => { this.movepage('Message') }}>Change!</button>
         </div>

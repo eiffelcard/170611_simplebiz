@@ -74,7 +74,7 @@ class Home extends Component {
         </p>
         <p>Jsonのメッセージ {this.state.jsonmessage.LOGINSUB}</p>
         <Page/>
-        <button onClick={()=>{this.movepage('Register')}}>Change!</button>
+        <button onClick={()=>{this.movepage('Register')}}>新規登録</button>
         <button onClick={()=>{this.switchpage(this.state.currentPage)}}>Switch!</button>
       </div>
     );

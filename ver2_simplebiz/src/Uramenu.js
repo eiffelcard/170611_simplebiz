@@ -83,12 +83,9 @@ class Uramenu extends Component {
     return (
          <div>
         <div>
-            <Header currentPage={this.state.currentPage}/>
-        </div>
-        <div className="menubox">
           {this.state.myid !== '' ? <MenuPage myid={this.state.myid} onChange={this.changeMenu} menutype={this.state.menutype} /> : ''}
         </div>
-        <div className="contentsbox">
+        <div>
           {this.state.myid !== '' ? <Page myid={this.state.myid} /> : ''}
           <button onClick={() => { this.movepage('Message') }}>Change!</button>
         </div>

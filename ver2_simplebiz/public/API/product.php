@@ -21,7 +21,7 @@
         pm.productfamilly
 					FROM product_masters as pm
 					WHERE is_campaign>0
-				 	order by is_campaign limit 5'
+				 	order by is_campaign limit 20'
 		);
 			$product_query=mysqli_query($db,$sql) or die(mysqli_error($db));
 
