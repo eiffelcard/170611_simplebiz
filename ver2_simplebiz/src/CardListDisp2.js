@@ -71,7 +71,7 @@ class CardListDisp2 extends Component {
       },
       gridList: {
          width: 600,
-        height: 500,
+        height: 400,
         overflowY: 'auto',
       },
        titleStyle: {
@@ -88,7 +88,6 @@ class CardListDisp2 extends Component {
 
 
     const disp = this.state.CardList.map((p) =>
-    
       <GridTile 
         key={p.img}
         title=' '
@@ -97,6 +96,7 @@ class CardListDisp2 extends Component {
      >
         <img src={this.state.baseProductImageUrl + p.thumbnail} alt={p.name} id={p.number} onTouchTap={this.select} style={styles.img}/>
       </GridTile>
+
     );
 
 
