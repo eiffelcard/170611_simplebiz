@@ -14,7 +14,7 @@ class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      baseUrl: 'https://skyutility.eiffelcard.com/ynoda_test/simplebiz/API/',
+      baseUrl: 'https://skyutility.eiffelcard.com/ynoda_test/simplebiz/API/sky/',
       baseUserImageUrl: 'https://skyutility.eiffelcard.com/pic/users_picture/',
       userNoimage: '/img/no-image.jpg',
       baseProductImageUrl: 'https://skyutility.eiffelcard.com/pic/product_picture/',

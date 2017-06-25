@@ -8,7 +8,7 @@ class MessageForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      baseUrl: 'https://skyutility.eiffelcard.com/ynoda_test/simplebiz/API/',
+      baseUrl: 'https://skyutility.eiffelcard.com/ynoda_test/simplebiz/API/sky/',
       baseProductImageUrl: 'https://skyutility.eiffelcard.com/pic/product_picture/',
       id: '',
       name: '',

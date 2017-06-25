@@ -10,7 +10,7 @@ class Home extends Component {
   constructor(props){
     super(props);
      this.state = {
-       baseUrl: 'https://skyutility.eiffelcard.com/ynoda_test/simplebiz/API/',
+       baseUrl: 'https://skyutility.eiffelcard.com/ynoda_test/simplebiz/API/sky/',
       currentPage:'Login',
       jsonmessage:''
      };
